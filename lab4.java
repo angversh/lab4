@@ -34,13 +34,25 @@ public class lab4 {
         System.out.println();
         int[] finArray = new int[ogArray.length];
         for (int i = 0, j = 0; i < ogArray.length && j < finArray.length; i++) {
-            if (ogArray[i] != X) {
+            if (ogArray[i] != X && checkX(ogArray, X)) {
                 finArray[j++] = ogArray[i];
+            } else {
+                System.out.println("No such element in the array.");
+                System.exit(1);
             }
         }
         System.out.print("Final array:");
         for (int i = 0; i < N-1; i++) {
             System.out.print(" " + finArray[i]);
         }
+    }
+    public static boolean checkX(int[] a, int X) {
+        int count = 0;
+        for (int j : a) {
+            if (j == X) {
+                count += 1;
+            }
+        }
+        return count == 1;
     }
 }
